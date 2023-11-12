@@ -30,18 +30,35 @@ result.append(["Diana DeGette",dianascount])
 result.append(["Raymon Anthony Doane",raymonscount])
 winner=max(result,key=lambda x:x[1])
 
-#Displaying the results as per project display Requirement
-Totalvote=len(csvreader)-1
-print("Election Results")
-print("-----------------------------")
-print("Total Votes: ",Totalvote )
-print("-----------------------------")
-print(f"Charles Casper Stockham: {round((charlscount/Totalvote)*100,4)}% ({charlscount})") 
-print(f"Diana DeGette: {round((dianascount/Totalvote)*100,4)}% ({dianascount})") 
-print(f"Raymon Anthony Doane: {round((raymonscount/Totalvote)*100,4)}% ({raymonscount})") 
-print("-----------------------------")
+with open('Election.txt', 'w') as f:
+  #Displaying the results as per project display Requirement
+  Totalvote=len(csvreader)-1
+  f.writelines("Election Results\n")
+  print("Election Results")
+  
+  f.writelines("-----------------------------\n")
+  print("-----------------------------")
 
-print("Winner: ", winner[0])
+  f.writelines(f"Total Votes: {Totalvote} \n")
+  print("Total Votes: ",Totalvote )
 
+  f.writelines(f"----------------------------- \n")
+  print("-----------------------------")
+  
+  f.writelines(f"Charles Casper Stockham: {round((charlscount/Totalvote)*100,4)}% ({charlscount}) \n")
+  print(f"Charles Casper Stockham: {round((charlscount/Totalvote)*100,4)}% ({charlscount})") 
+  
+  f.writelines(f"Diana DeGette: {round((dianascount/Totalvote)*100,4)}% ({dianascount}) \n") 
+  print(f"Diana DeGette: {round((dianascount/Totalvote)*100,4)}% ({dianascount})") 
+  
+  f.writelines(f"Raymon Anthony Doane: {round((raymonscount/Totalvote)*100,4)}% ({raymonscount})\n") 
+  print(f"Raymon Anthony Doane: {round((raymonscount/Totalvote)*100,4)}% ({raymonscount})") 
+
+  f.writelines("-----------------------------\n")
+  print("-----------------------------")
+
+  f.writelines(f"Winner: {winner[0]}")
+  print("Winner: ", winner[0])
+  f.close()
 
   

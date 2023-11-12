@@ -30,13 +30,28 @@ with open(filepath) as f:
         avgchange +=int(data[i][2])
       
     #Displaying all the records as per project results assignment
-    print("Financial Analysis") 
-    print("--------------------------------------------------------")   
-    print("Total Months :", len(data))
-    print("Total : $",plsum)
-    print("Average Change:",round(avgchange/(len(data)-1),2))
-   
-    maxpl = max(data, key=lambda x: x[2])
-    minpl = min(data, key=lambda x: x[2])
-    print(f"Greatest Increase in Profits : {maxpl[0]} ($ {maxpl[2]} )")
-    print(f"Greatest Decrease in Profits : {minpl[0]} ($ {minpl[2]} )")
+    with open('Financial_Analysis.txt', 'w') as f:
+        f.writelines("Financial Analysis \n")
+        print("Financial Analysis") 
+
+        f.writelines("-------------------------------------------------------- \n")
+        print("--------------------------------------------------------")   
+        
+        f.writelines(f"Total Months : {len(data)} \n")
+        print("Total Months :", len(data))
+        
+        f.writelines(f"Total : $ plsum \n")
+        print("Total : $",plsum)
+        
+        f.writelines(f"Average Change: {round(avgchange/(len(data)-1),2)} \n")
+        print("Average Change:",round(avgchange/(len(data)-1),2))
+    
+        maxpl = max(data, key=lambda x: x[2])
+        minpl = min(data, key=lambda x: x[2])
+
+        f.writelines(f"Greatest Increase in Profits : {maxpl[0]} ($ {maxpl[2]} ) \n")
+        print(f"Greatest Increase in Profits : {maxpl[0]} ($ {maxpl[2]} )")
+        
+        f.writelines(f"Greatest Decrease in Profits : {minpl[0]} ($ {minpl[2]} ) \n")
+        print(f"Greatest Decrease in Profits : {minpl[0]} ($ {minpl[2]} )")
+        f.close()
